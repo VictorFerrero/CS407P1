@@ -43,18 +43,7 @@ public class Quiz {
 
 	//	AssetManager assetManager = getAssets();
 
-		String[] imgQ = Data.imageQuestions;
-		String[] textQ = Data.textQuestions;
-		ArrayList<String> allQuestions = new ArrayList<String>();
-		for(int i = 0; i < imgQ.length; i++) {
-			allQuestions.add(imgQ[i]);
-		}
-		for(int i = 0; i < textQ.length; i++) {
-			allQuestions.add(textQ[i]);
-		}
-		Collections.shuffle(allQuestions);
-		String[] questions = new String[allQuestions.size()];
-		questions = allQuestions.toArray(questions);
+		String[] questions = Data.getQuestions();
 
 		for(int i = 0; i < questions.length; i++) {
 			String question = questions[i];

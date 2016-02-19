@@ -23,7 +23,6 @@ public class QuizActivity
 {
 
     private Quiz quiz;
-    private Activity mainActivity;
 
     public void onAnswerSubmitted(ImageQuestion question, Fragment fragment) {
         // this is where control will be passed back

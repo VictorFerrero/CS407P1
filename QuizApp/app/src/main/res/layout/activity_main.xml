@@ -40,4 +40,15 @@
         android:longClickable="false"
         android:nestedScrollingEnabled="false"
         android:onClick="onStartQuizButtonPress"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quit"
+        android:id="@+id/quit"
+        android:layout_centerHorizontal="true"
+        android:longClickable="false"
+        android:nestedScrollingEnabled="false"
+        android:onClick="quit"
+        android:layout_marginTop="280dp"/>
 </RelativeLayout>
