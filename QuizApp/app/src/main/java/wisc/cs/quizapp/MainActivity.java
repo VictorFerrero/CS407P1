@@ -6,16 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 
-
-/*
-release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
- */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -25,14 +20,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    // this allows MainActivity to specify a call back function for the quiz
+    // activity to send an intent back too
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             // TODO Extract the data returned from the child Activity.
             double score = data.getDoubleExtra("score", -1.0);
-            Toast.makeText(getApplicationContext(), "SCORE: " + score, Toast.LENGTH_LONG).show();
+            TextView tv = (TextView) this.findViewById(R.id.score);
+            String s1 = "You score was " + Double.toString(this.RoundTo2Decimals(score)) + "%";
+            char[] seq = s1.toCharArray();
+            tv.setText(seq, 0, seq.length);
+          //  Toast.makeText(getApplicationContext(), "SCORE: " + score, Toast.LENGTH_LONG).show();
         }
+        else {
+            // error state
+        }
+    }
 
+
+
+    private double RoundTo2Decimals(double val) {
+        DecimalFormat df2 = new DecimalFormat("###.##");
+        return Double.valueOf(df2.format(val));
     }
 
     protected void onStart() {
@@ -71,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
 
          */
-        int requestCode = 10;
-        startActivityForResult(intent, requestCode);
+        int requestCode = 10; // just to satisfy the below function call
+       this.startActivityForResult(intent, requestCode);
     }
 }

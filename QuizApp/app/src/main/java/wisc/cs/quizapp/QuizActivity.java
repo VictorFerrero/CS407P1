@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-
 /**
  * Created by Victor on 2/17/2016.
  */
@@ -26,7 +25,7 @@ public class QuizActivity
     private Quiz quiz;
     private Activity mainActivity;
 
-    public void onAnswerSubmitted(ImageQuestion question, Object fragment) {
+    public void onAnswerSubmitted(ImageQuestion question, Fragment fragment) {
         // this is where control will be passed back
         // grab another question
        // String msg = question.toString();
@@ -41,7 +40,7 @@ public class QuizActivity
         this.nextQuestion();
     }
 
-    public void onAnswerSubmitted(TextQuestion question, Object fragment) {
+    public void onAnswerSubmitted(TextQuestion question, Fragment fragment) {
         // this is where control will be passed back
         // grab another question
    //     String msg = question.toString();
@@ -88,6 +87,7 @@ public class QuizActivity
           //  startActivity(intent);
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //  super.onCreate(savedInstanceState);
@@ -95,7 +95,7 @@ public class QuizActivity
 
         super.onCreate(savedInstanceState);
         this.quiz = new Quiz();
-        this.quiz.initializeQuiz();
+        this.quiz.initializeQuiz(this.getAssets(), this);
         setContentView(R.layout.activity_quiz);
         // Check that the activity is using the layout version with
         // the fragment_container FrameLayout

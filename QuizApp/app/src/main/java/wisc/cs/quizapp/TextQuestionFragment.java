@@ -20,39 +20,41 @@ public class TextQuestionFragment
         extends Fragment
         implements View.OnClickListener{
 
-    OnAnswerSubmittedListener mCallback;
+    private OnAnswerSubmittedListener mCallback;
     private TextQuestion question;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragmentView view = inflater.inflate(R.layout.fragment_rssitem_detail,
-        View view = inflater.inflate(R.layout.text_question_fragment,
-                container, false);
+        View view = inflater.inflate(R.layout.text_question_fragment, container, false);
+        // get the question string and put it into the TextView
         TextView tv = (TextView) view.findViewById(R.id.question);
         String question = this.question.getQuestion();
         char[] charSeq = question.toCharArray();
         tv.setText(charSeq, 0, charSeq.length);
+
+        // now grab the possible answers for this question,
+        // and put them in the radio buttons
         String[] possibleAnswers = this.question.getPossibleAnswers();
-
-        RadioButton r = (RadioButton) view.findViewById(R.id.radio1);
+        // #1
+        RadioButton rb = (RadioButton) view.findViewById(R.id.radio1);
         charSeq = possibleAnswers[0].toCharArray();
-        r.setText(charSeq, 0, charSeq.length);
-
-        r = (RadioButton) view.findViewById(R.id.radio2);
+        rb.setText(charSeq, 0, charSeq.length);
+        // #2
+        rb = (RadioButton) view.findViewById(R.id.radio2);
         charSeq = possibleAnswers[1].toCharArray();
-        r.setText(charSeq, 0, charSeq.length);
-
-        r = (RadioButton) view.findViewById(R.id.radio3);
+        rb.setText(charSeq, 0, charSeq.length);
+        // #3
+        rb = (RadioButton) view.findViewById(R.id.radio3);
         charSeq = possibleAnswers[2].toCharArray();
-        r.setText(charSeq, 0, charSeq.length);
-
+        rb.setText(charSeq, 0, charSeq.length);
         return view;
     }
 
     // Container Activity must implement this interface
     public interface OnAnswerSubmittedListener {
-        public void onAnswerSubmitted(TextQuestion question, Object fragment);
+        public void onAnswerSubmitted(TextQuestion question, Fragment fragment);
     }
 
     @Override
@@ -76,6 +78,7 @@ public class TextQuestionFragment
 
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        // we need to bind the three radio buttons to their onClickListener
         RadioButton res1 = (RadioButton) getActivity().findViewById(R.id.radio1);
         res1.setOnClickListener(this);
 
@@ -86,6 +89,7 @@ public class TextQuestionFragment
         res1.setOnClickListener(this);
     }
 
+// onClick handler for the radio buttons
     public void onClick(View v) {
         // Is the button now checked?
         boolean checked = ((RadioButton) v).isChecked();
@@ -104,7 +108,7 @@ public class TextQuestionFragment
                         break;
             }
             this.question.setUserAnswer(choice);
-            this.mCallback.onAnswerSubmitted(this.question, this);
+            this.mCallback.onAnswerSubmitted(this.question, this); // pass the caller and the fragment back to QuizActivity
         }
     }
 
