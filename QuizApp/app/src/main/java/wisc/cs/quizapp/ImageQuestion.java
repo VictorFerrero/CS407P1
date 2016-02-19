@@ -3,22 +3,22 @@ package wisc.cs.quizapp;
 public class ImageQuestion extends Question{
 
 	private String userAnswer;
-	private String pathToImage;
+	private int imageId;
 	
-	public ImageQuestion(String q, String answer, String pto) {
+	public ImageQuestion(String q, String answer, int id) {
 		super(q, answer);
 		this.userAnswer = ""; // no answer at first
-		this.pathToImage = pto;
+		this.imageId = id;
 	}
 
 	
-	public String getPathToImage() {
-		return pathToImage;
+	public int getId() {
+		return this.imageId;
 	}
 
 
-	public void setPathToImage(String pathToImage) {
-		this.pathToImage = pathToImage;
+	public void setPathToImage(int id) {
+		this.imageId = id;
 	}
 
 
@@ -42,7 +42,7 @@ public class ImageQuestion extends Question{
 		s1 = "Question: " + this.getQuestion() + "\n";
 		s1 += "Answer: " + this.getAnswer() + "\n";
 		s1 += "User Answer: " + this.getUserAnswer() + "\n";
-		s1 += "Path to image: " + this.pathToImage + "\n";
+		s1 += "image id: " + this.imageId + "\n";
 		return s1;
 	}
 }

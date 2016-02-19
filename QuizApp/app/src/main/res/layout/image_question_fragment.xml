@@ -15,7 +15,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="This is where a question would go. lets see what happens when it gets really long."
         android:id="@+id/question"
         android:layout_gravity="center_horizontal"
         android:editable="false" />
@@ -26,7 +25,8 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:layout_marginTop="45dp"
-        android:text="This is where an answer goes">
+        android:layout_marginLeft="10dp"
+        android:text="Type answer here">
     </EditText>
 
     <Button
