@@ -18,10 +18,16 @@ public class Quiz {
 	}
 	
 	public void initializeQuiz() {
-		ImageQuestion img = new ImageQuestion("what is my favorite color?", "green", "/some/filepath");
+		ImageQuestion img = new ImageQuestion("what is the name of this school building?", "bascom hall", R.drawable.bascom_hall);
+		this.questions.add(img);
+		img = new ImageQuestion("what is the name of this abstract data type?", "binary search tree", R.drawable.binary_tree);
 		this.questions.add(img);
 
-		this.questions.add(new TextQuestion("how many days are there in a week?", "7", 3));
+		TextQuestion tq = new TextQuestion("how many days are there in a week?", "7", 3, "4", "2", "7");
+		this.questions.add(tq);
+
+		tq = new TextQuestion("what is the square root of 64?", "8", 1, "8", "16", "2");
+		this.questions.add(tq);
 	}
 	
 public Question getNextQuestion() {

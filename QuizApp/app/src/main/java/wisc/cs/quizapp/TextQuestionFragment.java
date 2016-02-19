@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class TextQuestionFragment
         extends Fragment
@@ -27,6 +29,24 @@ public class TextQuestionFragment
         // Inflate the layout for this fragmentView view = inflater.inflate(R.layout.fragment_rssitem_detail,
         View view = inflater.inflate(R.layout.text_question_fragment,
                 container, false);
+        TextView tv = (TextView) view.findViewById(R.id.question);
+        String question = this.question.getQuestion();
+        char[] charSeq = question.toCharArray();
+        tv.setText(charSeq, 0, charSeq.length);
+        String[] possibleAnswers = this.question.getPossibleAnswers();
+
+        RadioButton r = (RadioButton) view.findViewById(R.id.radio1);
+        charSeq = possibleAnswers[0].toCharArray();
+        r.setText(charSeq, 0, charSeq.length);
+
+        r = (RadioButton) view.findViewById(R.id.radio2);
+        charSeq = possibleAnswers[1].toCharArray();
+        r.setText(charSeq, 0, charSeq.length);
+
+        r = (RadioButton) view.findViewById(R.id.radio3);
+        charSeq = possibleAnswers[2].toCharArray();
+        r.setText(charSeq, 0, charSeq.length);
+
         return view;
     }
 
@@ -86,6 +106,11 @@ public class TextQuestionFragment
             this.question.setUserAnswer(choice);
             this.mCallback.onAnswerSubmitted(this.question, this);
         }
+    }
+
+    public void onBackPressed() {
+        //super.onBackPressed();
+        Toast.makeText(this.getContext(), "You cannot go back to previous question.", Toast.LENGTH_LONG).show();
     }
 
     public void setTextQuestion(TextQuestion q) {

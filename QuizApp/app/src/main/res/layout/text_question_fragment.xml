@@ -7,29 +7,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="This is where a question would go. lets see what happens when it gets really long."
         android:id="@+id/question"
         android:layout_gravity="center_horizontal"
         android:editable="false"
-        android:layout_marginTop="20dp"/>
+        android:paddingBottom="50dp"/>
 
 
     <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp">
         <RadioButton android:id="@+id/radio1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="radio1"/>
+            android:layout_height="wrap_content"/>
         <RadioButton android:id="@+id/radio2"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="radio2"/>
+            android:layout_height="wrap_content"/>
         <RadioButton android:id="@+id/radio3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="radio3"/>
+            android:layout_height="wrap_content"/>
     </RadioGroup>
 
 </LinearLayout>

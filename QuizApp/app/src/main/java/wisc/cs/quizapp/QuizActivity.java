@@ -29,8 +29,8 @@ public class QuizActivity
     public void onAnswerSubmitted(ImageQuestion question, Object fragment) {
         // this is where control will be passed back
         // grab another question
-        String msg = question.toString();
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+       // String msg = question.toString();
+       // Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
 
         FragmentManager manager = ((Fragment) fragment).getFragmentManager();
         FragmentTransaction trans = manager.beginTransaction();
@@ -44,8 +44,8 @@ public class QuizActivity
     public void onAnswerSubmitted(TextQuestion question, Object fragment) {
         // this is where control will be passed back
         // grab another question
-        String msg = question.toString();
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+   //     String msg = question.toString();
+   //     Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
 
         FragmentManager manager = ((Fragment) fragment).getFragmentManager();
         FragmentTransaction trans = manager.beginTransaction();
@@ -137,5 +137,9 @@ public class QuizActivity
         this.quiz = null;
     }
 
+    public void onBackPressed() {
+        //super.onBackPressed();
+        Toast.makeText(this.getApplicationContext(), "You cannot go back to previous question.", Toast.LENGTH_LONG).show();
+    }
 
 }

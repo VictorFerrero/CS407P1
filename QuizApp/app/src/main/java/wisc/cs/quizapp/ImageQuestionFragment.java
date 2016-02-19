@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class ImageQuestionFragment
         extends Fragment
@@ -26,6 +29,14 @@ implements View.OnClickListener{
         // Inflate the layout for this fragmentView view = inflater.inflate(R.layout.fragment_rssitem_detail,
         View view = inflater.inflate(R.layout.image_question_fragment,
                 container, false);
+
+        ImageView img= (ImageView) view.findViewById(R.id.imageView);
+        int imageId = this.question.getId();
+        img.setImageResource(imageId);
+
+        TextView question = (TextView) view.findViewById(R.id.question);
+        char[] stringSequence = this.question.getQuestion().toCharArray();
+        question.setText(stringSequence, 0, stringSequence.length);
         return view;
     }
 
@@ -64,6 +75,11 @@ implements View.OnClickListener{
         String message = answer.getText().toString();
         this.question.setUserAnswer(message);
         this.mCallback.onAnswerSubmitted(this.question, this);
+    }
+
+    public void onBackPressed() {
+        //super.onBackPressed();
+        Toast.makeText(this.getContext(), "You cannot go back to previous question.", Toast.LENGTH_LONG).show();
     }
 
     public void setImageQuestion(ImageQuestion q) {
