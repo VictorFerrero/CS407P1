@@ -74,7 +74,7 @@ public class QuizActivity
         }
         else {
             // the quiz is over
-          double score =  this.quiz.gradeQuiz();
+            double score =  this.quiz.gradeQuiz();
             Toast.makeText(getApplicationContext(), "QUIZ OVER", Toast.LENGTH_LONG).show();
         //    Toast.makeText(getApplicationContext(), "SCORE: " + score, Toast.LENGTH_LONG).show();
             Intent resultIntent = new Intent();
@@ -91,7 +91,6 @@ public class QuizActivity
     protected void onCreate(Bundle savedInstanceState) {
         //  super.onCreate(savedInstanceState);
         //  setContentView(R.layout.activity_quiz);
-
         super.onCreate(savedInstanceState);
         this.quiz = new Quiz();
         this.quiz.initializeQuiz(this.getAssets(), this);
